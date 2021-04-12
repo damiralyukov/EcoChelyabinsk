@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/categoriesFragment">
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.damiralyukov.ecochelyabinsk.ui.fragments.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.damiralyukov.ecochelyabinsk.ui.fragments.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.damiralyukov.ecochelyabinsk.data.Category" />
+        <action
+            android:id="@+id/action_categoryFragment_to_addCompanyFragment"
+            app:destination="@id/addCompanyFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_updateCompanyFragment"
+            app:destination="@id/updateCompanyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCompanyFragment"
+        android:name="com.damiralyukov.ecochelyabinsk.ui.fragments.AddCompanyFragment"
+        android:label="AddCompanyFragment"
+        tools:layout="@layout/fragment_add_company">
+        <argument
+            android:name="category"
+            app:argType="com.damiralyukov.ecochelyabinsk.data.Category" />
+        <action
+            android:id="@+id/action_addCompanyFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+            app:popUpTo="@id/categoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateCompanyFragment"
+        android:name="com.damiralyukov.ecochelyabinsk.ui.fragments.UpdateCompanyFragment"
+        android:label="UpdateCompanyFragment"
+        tools:layout="@layout/fragment_update_company">
+        <action
+            android:id="@+id/action_updateCompanyFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"
+            app:popUpTo="@id/categoryFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="company"
+            app:argType="com.damiralyukov.ecochelyabinsk.data.Company" />
+    </fragment>
+</navigation>
